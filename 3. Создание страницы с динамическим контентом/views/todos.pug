@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{title}
+        style
+            include ../static/style.css
+    body
+        header
+            h1 #{title}
+            nav
+                ul
+                    li
+                        a(href="/") Главная
+                    li
+                        a(href="/todos") Список задач
+
+        main
+            section.main-content
+                h2 Список задач
+                form(action="/todos/add", method="POST")
+                    input(type="text", name="task", placeholder="Введите новую задачу", required=true)
+                    button(type="submit") Добавить
+
+                ul
+                    each todo in todos
+                        li
+                            input(type="checkbox", id=`task-${todo.id}`, checked=todo.completed, disabled=true)
+                            label(for=`task-${todo.id}`)
+                                | #{todo.text}
+                            form(action="/todos/complete", method="POST", style="display:inline")
+                                input(type="hidden", name="id", value=todo.id)
+                                button(type="submit") #{todo.completed ? "Не выполнено" : "Выполнено"}
+                            form(action="/todos/delete", method="POST", style="display:inline")
+                                input(type="hidden", name="id", value=todo.id)
+                                button(type="submit") Удалить
+
+        footer
+            hr
+            h4 Контактная информация:
+            p Обращайтесь по телефону: +7 412 231 61 75
+            p Copyright 2024

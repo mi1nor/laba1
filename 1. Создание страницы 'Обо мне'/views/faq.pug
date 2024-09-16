@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    head
+        style
+            include ../static/style.css
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+    body
+        section
+            h1 Обо мне
+            img(src="https://avatars.mds.yandex.net/i?id=8e504fdb3496a87bde0ce9bcba2128c5a88c0129-9137964-images-thumbs&n=13", alt="")
+            p Имя: #{name}
+            p Возраст: #{age}
+            p Род занятий: #{rod_zanyatiy}
+            p Хобби: #{hobby}
+        section 
+            h2 Мои интересы
+            ul 
+            li Поспать подольше
+            li Веб-разработка
+            li 1С
+        section 
+            h2 Ссылки на соц.сети
+            a(href="") VK
+            a(href="") X 
+            a(href="") Telegram 
+            
